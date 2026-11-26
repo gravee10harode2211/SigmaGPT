@@ -22,10 +22,10 @@ const getChatCompletion = async (messages) => {
 
     if (!response.ok) {
       console.log("Groq API Error:", data);
-      throw new Error(data.error?.message || "Groq API request failed");
+      throw new Error(data.error?.messages || "Groq API request failed");
     }
 
-    return data.choices[0].message.content;
+    return data.choices[0].messages.content;
 
   } catch (err) {
     console.log("Chat Completion Error:", err);
