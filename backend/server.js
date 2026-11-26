@@ -8,6 +8,7 @@ import dns from "dns";
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
