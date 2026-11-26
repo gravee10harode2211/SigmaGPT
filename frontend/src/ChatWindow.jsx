@@ -29,7 +29,7 @@ function ChatWindow() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        messages: prompt,
+        message: prompt,
         threadId: currentThreadId,
       }),
     };
