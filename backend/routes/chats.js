@@ -157,6 +157,9 @@ router.delete("/thread/:threadId", async (req, res) => {
 });
 
 router.post("/chat", chatLimiter, async (req, res) => {
+    console.log("CHAT API HIT");
+console.log("Request Body:", req.body);
+console.log("Groq Key Exists:", !!process.env.GROQ_API_KEY);
   const { threadId, message } = req.body || {};
 
   if (
@@ -189,6 +192,7 @@ router.post("/chat", chatLimiter, async (req, res) => {
       content,
     }));
     const assistantReply = await getChatCompletion(history);
+    console.log("AI Reply:", assistantReply);
 
     thread.messages.push({ role: "assistant", content: assistantReply });
     await thread.save();
